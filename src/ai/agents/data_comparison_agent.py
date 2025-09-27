@@ -15,7 +15,7 @@ class DataComparisonAgent(BaseAgent):
         self.model = get_llm(dbc.MODEL, dbc.TEMPERATURE, dbc.MAX_TOKENS)
         self.model_alt = get_llm_alt(dbc.ALT_MODEL, dbc.ALT_TEMPERATURE, dbc.ALT_MAX_TOKENS)
         self.system_prompt = SYSTEM_PROMPT
-
+ 
     def format_input_prompt(self, state: Dict[str, Any]) -> str:
         task = state['current_task']
 
