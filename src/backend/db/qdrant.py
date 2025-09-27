@@ -26,7 +26,7 @@
 #     qdrant_client.get_collection("file_storage")
 # except Exception:
 #     qdrant_client.create_collection(
-#         collection_name="file_storage",
+#         collection_name="file_storage", 
 #         vectors_config=VectorParams(size=1536, distance=Distance.COSINE),
 #     )
 # async def store_document_embeddings(file_id, filename, text_content, user_id):
