@@ -1,0 +1,25 @@
+services:
+  
+  python-app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: insight-agent
+    restart: always
+    env_file:
+    - ../.env
+    environment:
+      - PYTHONUNBUFFERED=1
+    platform: linux/amd64
+    ports:
+      - "8000:8000"
+    volumes:
+      - storage:/data
+    healthcheck:
+      test: ["CMD-SHELL", "bash", "-c", 'exec 3<>/dev/tcp/localhost/8000; echo -e "GET / HTTP/1.1\r\nHost: localhost\r\nConnection: close\r\n\r\n" >&3; cat <&3']
+      interval: 5s
+      timeout: 1s
+      retries: 3
+
+volumes:
+  storage: # Define the storage volume

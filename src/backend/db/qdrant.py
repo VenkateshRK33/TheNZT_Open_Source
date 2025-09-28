@@ -15,7 +15,7 @@
 # from dotenv import dotenv_values
 # from src.ai.ai_schemas.tool_structured_input import QueryRequest
 # # Initialize Qdrant and embeddings
-# env_vars = dotenv_values('.env')
+# env_vars = dotenv_values('.env') 
 # openai_api_key = env_vars.get('OPENAI_API_KEY')
 # QDRANT_CLIENT_URL = env_vars.get('QDRANT_CLIENT_URL')
 # embeddings = AzureOpenAIEmbeddings(api_key=os.getenv('AZURE_API_KEY'), model="text-embedding-3-small", azure_endpoint=os.getenv("AZURE_API_BASE"))
