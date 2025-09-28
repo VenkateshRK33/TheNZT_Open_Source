@@ -35,6 +35,14 @@ app.include_router(session_router)
 app.include_router(user_router)
 app.include_router(chat_router)
 
+@app.get("/health")
+async def health_check():
+    return {
+        "status": "healthy",
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "service": "Finance Insight Agent API"
+    }
+
 @app.get("/", response_class=HTMLResponse)
 async def get():
     return FileResponse(path="out/index.html")
