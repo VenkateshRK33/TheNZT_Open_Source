@@ -7,6 +7,7 @@ from src.ai.stock_prediction.stock_prediction import StockAnalysisAgent
 from contextlib import asynccontextmanager
 from src.backend.db import mongodb
 from src.backend.api.auth import router as auth_router
+from src.backend.api.default_auth import router as default_auth_router
 from src.backend.api.session import router as session_router
 from src.backend.api.user import router as user_router
 from src.backend.api.chat import router as chat_router
@@ -29,11 +30,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-# Mount the static files
-app.include_router(auth_router)
-app.include_router(session_router)
-app.include_router(user_router)
-app.include_router(chat_router)
+# Mount the routers
+app.include_router(auth_router, prefix="/api/auth")
+app.include_router(default_auth_router, prefix="/api/auth")
+app.include_router(session_router, prefix="/api")
+app.include_router(user_router, prefix="/api")
+app.include_router(chat_router, prefix="/api")
 
 @app.get("/health")
 async def health_check():

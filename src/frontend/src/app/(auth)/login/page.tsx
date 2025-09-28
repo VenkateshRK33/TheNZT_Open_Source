@@ -53,7 +53,7 @@ const LoginPage: React.FC = () => {
       const response = await ApiServices.login(data.email, data.password);
       toast.success('Login successful');
       Cookies.set('access_token', response.data.access_token);
-      router.push('/');
+      router.push('/dashboard');
     } catch (err: any) {
       toast.error(
         err?.response?.data.detail || 'Invalid email or password or account does not exist.'

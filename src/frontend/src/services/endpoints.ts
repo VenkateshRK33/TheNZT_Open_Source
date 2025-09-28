@@ -1,7 +1,7 @@
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || '';
 
 export const API_ENDPOINTS = {
-  LOGIN: `${BASE_URL}/login`,
+  LOGIN: `${BASE_URL}/api/auth/default-login`,
   SIGNUP: `${BASE_URL}/registration`,
   SESSION_HISTORY: '/sessions',
   LOGOUT: '/auth/logout',

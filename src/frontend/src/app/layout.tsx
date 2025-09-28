@@ -46,7 +46,7 @@ export default function RootLayout({
 
       if (isValid) {
         if (noSidebarPages.includes(pathname)) {
-          router.push('/');
+          router.push('/dashboard');
         }
       } else {
         if (!noSidebarPages.includes(pathname)) {

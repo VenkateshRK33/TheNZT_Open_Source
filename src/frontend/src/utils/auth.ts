@@ -19,7 +19,7 @@ export const verifyToken = async (): Promise<boolean> => {
     }
 
     // Verify token with API
-    const user = await axiosInstance.get('/get_user_info');
+    const user = await axiosInstance.get('/api/get_user_info');
     useAuthStore
       .getState()
       .setUser(user.data.full_name, user.data.email, user.data.profile_picture);

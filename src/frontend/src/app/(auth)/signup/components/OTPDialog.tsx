@@ -63,12 +63,14 @@ if(OTP){
   const handleResendOtp = async () => {
     setResendLoading(true);
     try {
-      const response= await axios.post(API_ENDPOINTS.SIGNUP, {
-        ...registerationData,
-        full_name: registerationData.fullName,
+      const response = await axios.post(API_ENDPOINTS.SEND_VERIFICATION_OTP, {
+        email: registerationData.email,
+        name: registerationData.fullName,
+        purpose: 'registration',
       });
       setOtp(response?.data?.OTP);
       setTimer(30);
+      toast.success('OTP resent successfully');
     } catch (error: any) {
       setTimer(0);
       setErrors({ otp: error?.response?.data?.detail || 'Network Error, Please try again later' });
